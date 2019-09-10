@@ -8,21 +8,26 @@ def linear_search(arr, target):
 
 # STRETCH: write an iterative implementation of Binary Search 
 def binary_search(arr, target):
+
   if len(arr) == 0:
     return -1  # array empty
 
+  min = 0
+  max = len(arr) - 1
+
   # TO-DO: add missing code
-  while len(arr) > 0:
-    middle = int(len(arr) / 2)
+  while min <= max:
+    middle = int((min + max) / 2)
     middle_test = arr[middle]
-    if middle_test == target:
-      return target
+    if middle_test < target:
+      min =  middle + 1
     elif middle_test > target:
-      arr = arr[:middle]
+      max = middle - 1
     else:
-      arr = arr[middle + 1:]
+      return middle
 
   return -1  # not found
+
 
 
 # STRETCH: write a recursive implementation of Binary Search 
